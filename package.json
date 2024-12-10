@@ -8,9 +8,11 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "start": "prettier --write src/node "
   },
   "dependencies": {
+    "express": "^4.21.1",
+    "pg": "^8.13.1",
     "swiper": "^11.1.14",
     "vue": "^3.4.29",
     "vue-router": "^4.4.5"
@@ -23,6 +25,7 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
+    "nodemon": "^3.1.7",
     "postcss": "^8.4.47",
     "prettier": "^3.2.5",
     "tailwindcss": "^3.4.12",
