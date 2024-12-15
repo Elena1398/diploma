@@ -1,10 +1,10 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import axios from 'axios';
-import CardDessert from './CardDessert.vue';
+import CardDessert from '../components/CardDessert.vue';
 
 const prop = defineProps({
-  id: String // Получаем bookCode как пропс
+  id: String // Получаем des_id как пропс
 });
 console.log(prop.id)
 
@@ -15,7 +15,7 @@ onMounted(async () => {
         const response = await axios.get('http://localhost:8080/apis/desert/' + prop.id);
         cardDes.value = response.data; // Сохраняем полученные данные
     } catch (error) {
-        console.error('Ошибка при загрузке книги:', error);
+        console.error('Ошибка при загрузке десерта:', error);
     }
 });
 </script>

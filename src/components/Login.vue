@@ -3,66 +3,114 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
-    }
+      password: '',
+      showDevelopmentMessage: true, // Флаг для отображения сообщения о разработке
+    };
   },
   methods: {
     handleLogin() {
       // Логика для обработки входа
-      console.log('Имя пользователя:', this.username)
-      console.log('Пароль:', this.password)
+      console.log('Имя пользователя:', this.username);
+      console.log('Пароль:', this.password);
       // Здесь можно добавить логику для аутентификации
+    },
+    closeMessage() {
+      this.showDevelopmentMessage = false;
+      this.$router.push('/'); // Переход на главную страницу после закрытия сообщения
     }
+  },
+  mounted() {
+    // Сообщение о разработке при монтировании компонента
+    this.showDevelopmentMessage = true;
   }
-}
+};
 </script>
 
 <template>
-  <div class="max-w-lg m-auto p-20 ">
+  <div>
+    <!-- Блок с сообщением о разработке -->
+    <div v-if="showDevelopmentMessage" class="development-message">
+      <p class="text-xl font-bold">Эта страница находится в стадии разработки!</p>
+      <button @click="closeMessage" class="mt-4  text-white p-2 rounded border-slate-300 ">
+        Закрыть
+      </button>
+    </div>
+
+    <!-- Основной контент страницы входа -->
+    <div v-if="showDevelopmentMessage" class="max-w-lg m-auto p-20">
       <h1 class="font-mono text-center font-bold uppercase m-10 text-xl">Вход</h1>
       <form @submit.prevent="handleLogin">
         <div class="mt-6">
           <label class="font-mono" for="username">Имя пользователя:</label>
-          <input class=" border border-slate-300 rounded-lg p-2" type="text" id="username" v-model="username" required />
+          <input
+            class="border border-slate-300 rounded-lg p-2"
+            type="text"
+            id="username"
+            v-model="username"
+            required
+          />
         </div>
         <div class="mt-6">
           <label class="font-mono text-center" for="password">Пароль:</label>
-          <input  class="border border-slate-300 rounded-lg p-2" type="password" id="password" v-model="password" required />
+          <input
+            class="border border-slate-300 rounded-lg p-2"
+            type="password"
+            id="password"
+            v-model="password"
+            required
+          />
         </div>
-        <button class="border border-slate-300 rounded-lg p-1 mt-8 font-mono" type="submit"><router-link to="/catalog">Войти</router-link></button>
+        <button class="border border-slate-300 rounded-lg p-2 mt-8 font-mono block mx-auto w-32" type="submit">
+    Войти
+</button>
         <div class="flex justify-self-center items-center mt-6">
-           <router-link class="font-mono text-center font-bold uppercase m-8 text-xl" to="/registration">Регистрация</router-link>
-            <img src="../../svg\arrow_forward.svg" alt="" />
+          <router-link
+            class="font-mono text-center font-bold uppercase m-8 text-xl"
+            to="/registration"
+            >Регистрация</router-link
+          >
+          <img src="../../svg/arrow_forward.svg" alt="" />
         </div>
       </form>
     </div>
+  </div>
 </template>
 
 <style scoped>
-
-input[type="text"],
-input[type="password"] {
+input[type='text'],
+input[type='password'] {
   width: 100%; /* Полная ширина полей ввода */
   transition: border-color 0.3s; /* Плавный переход для рамки */
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
+input[type='text']:focus,
+input[type='password']:focus {
   border-color: #c091d0; /* Цвет рамки при фокусе */
   outline: none; /* Убираем стандартный фокусный контур */
 }
 
-button {
-  width: 100%; /* Полная ширина кнопки */
-  padding: 10px; /* Внутренние отступы */
-  background-color: #a69dab; /* Цвет фона кнопки */
-  color: white; /* Цвет текста кнопки */
-  cursor: pointer; /* Курсор при наведении на кнопку */
-  transition: background-color 0.3s; /* Плавный переход для фона кнопки */
-}
 
 button:hover {
   background-color: #979598; /* Темнее при наведении */
 }
-</style>
 
+.development-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.development-message p {
+  color: white;
+  font-size: 20px;
+}
+
+</style>

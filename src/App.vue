@@ -1,14 +1,17 @@
 <script setup>
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 </script>
 
 <template>
-  <div class="m-auto rounded-xl shadow-xl mt-30">
+  <div class="flex flex-col min-h-screen">
     <Header />
-    <router-view></router-view>
+    <div class="flex-grow">
+      <router-view></router-view>
+    </div>
     <Footer />
   </div>
 </template>
 
 <style scoped></style>
+

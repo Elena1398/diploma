@@ -30,7 +30,7 @@ const formattedWeight = (weight) => {
       :src="imageUrl"
       alt="Dessert Image"
     />
-    <div class="w-1/2 p-4 flex flex-col justify-between ml-14">
+    <div class="w-1/2 p-4 flex flex-col justify-between ml-14 mb-28">
       <div>
         <h2 class="text-xl mt-5">{{ title }}</h2>
         <div>
@@ -68,7 +68,7 @@ const formattedWeight = (weight) => {
           </div>
         </div>
       </div>
-      <button class="border border-slate-300 rounded-lg p-1 mt-8 font-mono text-center" type="submit">В корзину</button>
+      <!-- <button class="border border-slate-300 rounded-lg p-1 mt-8 font-mono text-center" type="submit">В корзину</button> -->
     </div>
   </div>
 </template>

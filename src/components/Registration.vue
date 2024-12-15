@@ -49,7 +49,7 @@ export default {
           <label class="font-mono text-center" for="repepassword">Повторите пароль:</label>
           <input  class="border border-slate-300 rounded-lg p-2" type="password" id="repepassword" v-model="repepassword" required />
         </div>
-        <button class="border border-slate-300 rounded-lg p-1 mt-8 font-mono" type="submit"> <router-link to="/catalog">Зарегистрироваться</router-link></button>
+        <button class="border border-slate-300 rounded-lg p-1 font-mono mb-28 mt-6" type="submit"> <router-link to="/des">Зарегистрироваться</router-link></button>
       </form>
     </div>
 </template>
